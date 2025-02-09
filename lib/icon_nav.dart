@@ -5,12 +5,14 @@ class IconNav extends StatelessWidget {
   final IconData icon;
   final bool isSelected;
   final Function onTap;
+  final Color selectedColor;
 
   const IconNav({
     super.key,
     required this.icon,
     required this.isSelected,
     required this.onTap,
+    required this.selectedColor,
   });
 
   @override
@@ -24,7 +26,7 @@ class IconNav extends StatelessWidget {
             child: FaIcon(
               icon,
               size: 24,
-              color: isSelected ? Colors.black : Colors.grey,
+              color: isSelected ? selectedColor : Colors.grey,
             ),
           ),
         ),
