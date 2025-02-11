@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nomad_thread/icon_nav.dart';
+import 'package:nomad_thread/search_screen.dart';
 import 'package:nomad_thread/timeline.dart';
+
+import 'activity_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -16,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
     "https://logotyp.us/file/threads.svg",
     width: 100,
   );
-  int _selectedIndex = 0; //home이 디폴트
+  int _selectedIndex = 3; //home이 디폴트
 
   void _onIconTap(int index) {
     setState(() {
@@ -28,26 +31,22 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     List<Widget> screens = [
       Container(child: Timeline()),
-      Container(
-        child: Text("돋보기"),
-      ),
+      SearchScreen(),
       Container(
         child: Text("글쓰기"),
       ),
-      Container(
-        child: Text("하트"),
-      ),
+      ActivityScreen(),
       Container(
         child: Text("프로필"),
       ),
     ];
 
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        centerTitle: true,
-        title: threadLogo,
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: Colors.white,
+      //   centerTitle: true,
+      //   title: threadLogo,
+      // ),
       body: screens[_selectedIndex],
       bottomNavigationBar: BottomAppBar(
         child: Row(
