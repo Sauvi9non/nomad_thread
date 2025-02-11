@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nomad_thread/icon_nav.dart';
 import 'package:nomad_thread/search_screen.dart';
 import 'package:nomad_thread/timeline.dart';
+import 'package:nomad_thread/user_profile_screen.dart';
 
 import 'activity_screen.dart';
 
@@ -19,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
     "https://logotyp.us/file/threads.svg",
     width: 100,
   );
-  int _selectedIndex = 3; //home이 디폴트
+  int _selectedIndex = 4;
 
   void _onIconTap(int index) {
     setState(() {
@@ -37,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       ActivityScreen(),
       Container(
-        child: Text("프로필"),
+        child: UserProfileScreen(),
       ),
     ];
 
