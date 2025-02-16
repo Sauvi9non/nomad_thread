@@ -26,7 +26,7 @@ class IconNav extends StatelessWidget {
             child: FaIcon(
               icon,
               size: 24,
-              color: isSelected ? selectedColor : Colors.grey,
+              color: isSelected ? selectedColor : selectedColor.withAlpha(100),
             ),
           ),
         ),

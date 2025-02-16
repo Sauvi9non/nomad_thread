@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nomad_thread/constants/gaps.dart';
 import 'package:nomad_thread/constants/sizes.dart';
+import 'package:nomad_thread/isDarkMode.dart';
 import 'package:nomad_thread/settings_screen.dart';
 
 class UserProfileScreen extends StatelessWidget {
@@ -60,7 +61,9 @@ class UserProfileScreen extends StatelessWidget {
                                   Container(
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(50),
-                                      color: Colors.grey[100],
+                                      color: isDarkMode(context)
+                                          ? Colors.grey.shade600
+                                          : Colors.grey[100],
                                     ),
                                     child: Padding(
                                       padding: const EdgeInsets.symmetric(
@@ -69,7 +72,9 @@ class UserProfileScreen extends StatelessWidget {
                                       child: Text(
                                         "threads.net",
                                         style: TextStyle(
-                                          color: Colors.grey,
+                                          color: isDarkMode(context)
+                                              ? Colors.black
+                                              : Colors.grey,
                                         ),
                                       ),
                                     ),
@@ -138,7 +143,7 @@ class UserProfileScreen extends StatelessWidget {
                               horizontal: Sizes.size44,
                             ),
                             decoration: BoxDecoration(
-                                color: Colors.white,
+                                //color: Colors.white,
                                 borderRadius: BorderRadius.circular(
                                   Sizes.size10,
                                 ),
@@ -149,7 +154,7 @@ class UserProfileScreen extends StatelessWidget {
                             child: Text(
                               "Edit profile",
                               style: TextStyle(
-                                color: Colors.black,
+                                //color: Colors.black,
                                 fontSize: Sizes.size16,
                                 fontWeight: FontWeight.w500,
                               ),
@@ -162,7 +167,7 @@ class UserProfileScreen extends StatelessWidget {
                               horizontal: Sizes.size44,
                             ),
                             decoration: BoxDecoration(
-                                color: Colors.white,
+                                // color: Colors.white,
                                 borderRadius: BorderRadius.circular(
                                   Sizes.size10,
                                 ),
@@ -173,7 +178,7 @@ class UserProfileScreen extends StatelessWidget {
                             child: Text(
                               "Share profile",
                               style: TextStyle(
-                                color: Colors.black,
+                                // color: Colors.black,
                                 fontSize: Sizes.size16,
                                 fontWeight: FontWeight.w500,
                               ),
@@ -221,11 +226,8 @@ class ProfileTabBar extends SliverPersistentHeaderDelegate {
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
     return TabBar(
-      unselectedLabelStyle: TextStyle(color: Colors.grey),
       splashFactory: NoSplash.splashFactory,
-      indicatorColor: Colors.black,
       indicatorSize: TabBarIndicatorSize.label,
-      labelColor: Colors.black,
       labelPadding: EdgeInsets.symmetric(
         vertical: Sizes.size10,
       ),
@@ -237,7 +239,7 @@ class ProfileTabBar extends SliverPersistentHeaderDelegate {
           child: Text(
             "Threads",
             style: TextStyle(
-              color: Colors.black,
+              // color: Colors.black,
               fontSize: Sizes.size16,
               fontWeight: FontWeight.w500,
             ),
@@ -251,7 +253,7 @@ class ProfileTabBar extends SliverPersistentHeaderDelegate {
           child: Text(
             "Replies",
             style: TextStyle(
-              color: Colors.black,
+              // color: Colors.black,
               fontSize: Sizes.size16,
               fontWeight: FontWeight.w500,
             ),

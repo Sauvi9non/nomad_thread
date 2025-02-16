@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nomad_thread/constants/gaps.dart';
 import 'package:nomad_thread/icon_nav.dart';
+import 'package:nomad_thread/isDarkMode.dart';
 
 import 'constants/sizes.dart';
 
@@ -73,6 +74,8 @@ class _PostState extends State<Post> {
                         CircleAvatar(
                           //프로필 이미지
                           radius: 50,
+                          backgroundColor:
+                              isDarkMode(context) ? Colors.black : Colors.white,
                           backgroundImage: NetworkImage(
                             widget.profileImg,
                           ),
@@ -83,10 +86,14 @@ class _PostState extends State<Post> {
                           child: CircleAvatar(
                             radius: 15,
                             //+ 아이콘
-                            backgroundColor: Colors.white,
+                            backgroundColor: isDarkMode(context)
+                                ? Colors.white
+                                : Colors.black,
                             child: FaIcon(
                               FontAwesomeIcons.circlePlus,
-                              color: Colors.black,
+                              color: isDarkMode(context)
+                                  ? Colors.black
+                                  : Colors.white,
                               size: 25,
                             ),
                           ),
@@ -111,6 +118,8 @@ class _PostState extends State<Post> {
                       children: [
                         CircleAvatar(
                           radius: 60,
+                          backgroundColor:
+                              isDarkMode(context) ? Colors.black : Colors.white,
                           backgroundImage: NetworkImage(
                             widget.profileImg,
                           ),
@@ -136,7 +145,6 @@ class _PostState extends State<Post> {
                               style: TextStyle(
                                 fontSize: Sizes.size18,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.black,
                               ),
                             ),
                             Gaps.h5,
@@ -162,7 +170,7 @@ class _PostState extends State<Post> {
                             Gaps.h18,
                             FaIcon(
                               FontAwesomeIcons.ellipsis,
-                              color: Colors.black,
+                              // color: Colors.black,
                               size: Sizes.size18,
                             ),
                           ],

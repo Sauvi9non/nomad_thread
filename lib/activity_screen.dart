@@ -23,18 +23,15 @@ class ActivityScreen extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 10),
             child: Text(
               "Activity",
-              style: TextStyle(fontSize: 42, fontWeight: FontWeight.w700),
+              style: TextStyle(
+                fontSize: 42,
+                fontWeight: FontWeight.w700,
+              ),
             ),
           ),
           bottom: TabBar(
             tabAlignment: TabAlignment.start,
             padding: EdgeInsets.symmetric(vertical: 16),
-            indicator: BoxDecoration(
-              color: Colors.black,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            labelColor: Colors.white,
-            unselectedLabelColor: Colors.black,
             isScrollable: true,
             tabs: [
               for (var activity in activities)

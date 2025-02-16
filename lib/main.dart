@@ -16,7 +16,9 @@ class NomadThreadApp extends StatelessWidget {
     return MaterialApp(
       //기본 전역 설정들 다 여기에
       title: "Thread Clone",
+      themeMode: ThemeMode.system,
       theme: ThemeData(
+        brightness: Brightness.light,
         scaffoldBackgroundColor: Colors.white,
         appBarTheme: AppBarTheme(
           foregroundColor: Colors.black,
@@ -35,6 +37,35 @@ class NomadThreadApp extends StatelessWidget {
           ),
           color: Colors.white,
           elevation: 0,
+        ),
+        tabBarTheme: TabBarTheme(
+          indicator: BoxDecoration(
+            color: Colors.black.withAlpha(200),
+            borderRadius: BorderRadius.circular(10),
+          ),
+          labelColor: Colors.white,
+          unselectedLabelColor: Colors.black,
+        ),
+      ),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+        appBarTheme: AppBarTheme(
+          foregroundColor: Colors.white,
+          backgroundColor: Colors.black,
+          elevation: 0,
+          titleTextStyle: TextStyle(
+            color: Colors.white,
+            fontSize: Sizes.size18,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        tabBarTheme: TabBarTheme(
+          indicator: BoxDecoration(
+            color: Colors.white.withAlpha(200),
+            borderRadius: BorderRadius.circular(10),
+          ),
+          labelColor: Colors.black,
+          unselectedLabelColor: Colors.white,
         ),
       ),
       home: HomeScreen(), //실행 시 가장 먼저 보이는 화면
