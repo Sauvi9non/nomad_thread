@@ -1,10 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:nomad_thread/display_mode_model.dart';
+import 'package:nomad_thread/display_mode_repo.dart';
+import 'package:nomad_thread/display_mode_vm.dart';
 import 'package:nomad_thread/home_screen.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'constants/sizes.dart';
 
-void main() {
-  runApp(const NomadThreadApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations(
+    [
+      DeviceOrientation.portraitUp,
+    ],
+  );
+
+  final preferences = await SharedPreferences.getInstance();
+  final repository = DisplayModeRepository(preferences);
+
+  runApp(
+    ProviderScope(
+      overrides: [
+        displayModeProvider.overrideWith(() => DisplayModeViewModel(repository))
+      ],
+      child: NomadThreadApp(),
+    ),
+  );
 }
 
 class NomadThreadApp extends StatelessWidget {
@@ -16,7 +40,9 @@ class NomadThreadApp extends StatelessWidget {
     return MaterialApp(
       //기본 전역 설정들 다 여기에
       title: "Thread Clone",
-      themeMode: ThemeMode.system,
+      themeMode: context.watch<DisplayModeModel>().displayMode
+          ? ThemeMode.light
+          : ThemeMode.dark,
       theme: ThemeData(
         brightness: Brightness.light,
         scaffoldBackgroundColor: Colors.white,
